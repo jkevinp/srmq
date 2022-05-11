@@ -1,4 +1,4 @@
-package rabbit
+package smrq
 
 import "github.com/streadway/amqp"
 

@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"example.com/rabbitmq/pkg/rabbit"
+	srmq "github.com/jkevinp/srmq"
 	"github.com/streadway/amqp"
 )
 
@@ -20,7 +20,7 @@ func main() {
 
 func consumer() {
 
-	consumer, err := rabbit.NewConsumer(rabbitConStr, "gameQ", "game", rabbit.EX_TYPE_DIRECT, false)
+	consumer, err := srmq.NewConsumer(rabbitConStr, "gameQ", "game", srmq.EX_TYPE_DIRECT, false)
 
 	if err != nil {
 		panic(err)
@@ -48,7 +48,7 @@ func consumer() {
 
 func publisher() {
 
-	pub := rabbit.NewPublisher(rabbitConStr, "game", rabbit.EX_TYPE_DIRECT)
+	pub := srmq.NewPublisher(rabbitConStr, "game", srmq.EX_TYPE_DIRECT)
 
 	quit := make(chan bool)
 
